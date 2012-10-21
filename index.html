@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>首页</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta content="false" name="twcClient" id="twcClient" />
+    <link href="css/guitar.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="fullscreen">
+    <section class="bd">
+        <div id="guitar">
+            <ul id="c1" class="chord">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <ul id="c2" class="chord">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <ul id="c3" class="chord">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <ul id="c4" class="chord">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <ul id="c5" class="chord">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <ul id="c6" class="chord">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="alphabet">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+    <audio id="catVoice" src="http://download.taobaocdn.com/mobile/1111/cat.mp3" preload="auto"/>
+</div>
+<script src="http://a.tbcdn.cn/mw/base/libs/seajs/1.2.0/sea.js" type="text/javascript"></script>
+<script>seajs.use('./js/guitar.js',function(guitar){
+    guitar.init();
+});
+</script>
+</body>
+</html>
