@@ -6,12 +6,44 @@ em,i{font-style:normal;}
 img{border:none;}
 input,img{vertical-align:middle;}
 body{color:#000;font-family:arial;background:#FFF;}
+.red {
+    background-color: red;
+}
+.green {
+    background-color: green;
+}
+.bd {
+    width: 480px;
+    height: 320px;
+    background-image:url(../images/fretboard.jpg);
+    -webkit-background-size: contain;
+    background-repeat:no-repeat;
+    overflow:hidden;
+}
+#guitar {
+    margin-top: 38px;
+}
 .chord {
     display: -webkit-box;
 }
 .chord li {
-    width: 50px;
-    height: 50px;
-    border:solid 1px #ccc;
+    -webkit-box-flex: 1;
+    height: 39px;
+    /*border:solid 1px #ccc;*/
+    display:block;
+}
+.chord li.mark {
+    background-image:url(../images/mark.png);
+    -webkit-background-size: 32px 32px;
+    background-repeat:no-repeat;
+    background-position: center center;
+}
+.alphabet {
+    display: -webkit-box;
+}
+.alphabet span {
+    /*border:solid 1px #FFF;*/
+    -webkit-box-flex: 1;
+    height: 47px;
     display:block;
 }

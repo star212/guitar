@@ -32,45 +32,80 @@ define(function(require) {
         var guitar  =  {
 
             el: document.getElementById("guitar"),
-
-            fretBoard: (function(){
-                var _fretBoard = [];
-                var alphabet = ["E","F","F#/Gb","G","G#/Ab","A","A#/Bb","B","C","C#/Db","D","D#/Eb"];
-
-                _fretBoard[1] = _fretBoard[6] = alphabet; 
-                _fretBoard[2] = common.translate(alphabet,7); 
-                _fretBoard[3] = common.translate(alphabet,3); 
-                _fretBoard[4] = common.translate(alphabet,5); 
-                _fretBoard[5] = common.translate(alphabet,10); 
-
-                return _fretBoard;
-            })(),
-
+            alphabet: ["C","C#/Db","D","D#/Eb","E","F","F#/Gb","G","G#/Ab","A","A#/Bb","B"],
+            selectedChord: 0,
+            voice: [undefined,24,19,15,10,5,0],
             init: function() {
-                this.el.addEventListener("click", this, false);
+                this.el.addEventListener("click", this.again, false);
                 //document.getElementById("btn").addEventListener("touchstart", this, false);
+                this.chords = this.el.getElementsByTagName("ul");
+                this.alphabetEl = this.el.getElementsByClassName("alphabet")[0];
+                this.fretBoard = [];
+                this.fretBoard[1] = this.fretBoard[6] = common.translate(this.alphabet,4); //E
+                this.fretBoard[2] = common.translate(this.alphabet,11); //B
+                this.fretBoard[3] = common.translate(this.alphabet,7); //G
+                this.fretBoard[4] = common.translate(this.alphabet,2); //D
+                this.fretBoard[5] = common.translate(this.alphabet,9); //A
+
+                this.alphabetEl.addEventListener("click", this, false);
+
+                this.start();
             },
             handleEvent: function(e) {
                 
-                console.log(common.$(e.target.parentNode.childNodes));
+                //console.log(common.$(e.target.parentNode.childNodes));
                 switch(e.type) {
                     case "click":
-                        (e.tagName = "LI") && this.trigger(e);
+                        var that = this;
+                        var target = e.target;
+                        var _parent =  target.parentNode;
+                        var i = common.$(_parent.childNodes).indexOf(target);
+
+                        (this.x == 12) && (this.x = 1);
+                        console.log(this.fretBoard[this.y][this.x]);
+                        if (this.fretBoard[this.y][this.x] == this.alphabet[i]) {
+                            target.className = "green";
+                            setTimeout(function(){
+                                that.reset();
+                                that.addMark();
+                            },1000);
+                        }else{
+                            target.className = "red";
+                        }
+
+
                         break;
                     case "touchstart":
                         this.trigger();
                         break;
                 }
             },
-            trigger: function(e) {
-                var target = e.target;
-                var _parent =  target.parentNode;
-                var fret = common.$(_parent.childNodes).indexOf(target);
-                var chordPos = common.$(_parent.parentNode.childNodes).indexOf(_parent) + 1;
-                alert(chordPos + ":" + fret);
+            again: function(e) {
+                (e.target.tagName == "LI") && guitar.sound.play();
+            },
+            reset: function() {
+                for (var i = 0; i < this.alphabetEl.childNodes.length; i++) {
+                    this.alphabetEl.childNodes[i].className = "";
+                };
+                this.curMark.className = "";
             },
             button: function() {
                 alert(this.dude);
+            },
+            addMark: function() {
+                this.x = common.random(13,1)[0];
+                this.selectedChord ? (this.y = this.selectedChord) : (this.y = common.random(6,1)[0] + 1);
+
+                console.log(this.x,this.y);
+                this.curMark = common.$(this.chords[this.y-1].childNodes)[this.x];
+                this.curMark.className = "mark";
+
+                this.sound = document.createElement("audio");
+                this.sound.src = "audio/" + (this.voice[this.y] + this.x) + ".mp3";
+                this.sound.play();
+            },
+            start: function() {
+                this.addMark();
             }
         };
         
