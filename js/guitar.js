@@ -61,7 +61,7 @@ define(function(require) {
                         var _parent =  target.parentNode;
                         var i = common.$(_parent.childNodes).indexOf(target);
 
-                        (this.x == 12) && (this.x = 1);
+                        (this.x == 12) && (this.x = 0);
                         console.log(this.fretBoard[this.y][this.x]);
                         if (this.fretBoard[this.y][this.x] == this.alphabet[i]) {
                             target.className = "green";
