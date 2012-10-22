@@ -49,6 +49,13 @@ define(function(require) {
 
                 this.alphabetEl.addEventListener("click", this, false);
 
+                this.sound = [];
+                for (var i = 0; i < 37; i++) {
+                    this.sound.push(document.createElement("audio"));
+                    this.sound[i].src = "audio/" + i + ".mp3";
+                    this.sound[i].load();
+                };
+
                 this.start();
             },
             handleEvent: function(e) {
@@ -100,9 +107,7 @@ define(function(require) {
                 this.curMark = common.$(this.chords[this.y-1].childNodes)[this.x];
                 this.curMark.className = "mark";
 
-                this.sound = document.createElement("audio");
-                this.sound.src = "audio/" + (this.voice[this.y] + this.x) + ".mp3";
-                this.sound.play();
+                this.sound[this.voice[this.y] + this.x].play();
             },
             start: function() {
                 this.addMark();
