@@ -88,7 +88,7 @@ define(function(require) {
                 }
             },
             again: function(e) {
-                (e.target.tagName == "LI") && guitar.sound.play();
+                (e.target.tagName == "LI") && guitar.sound[guitar.voice[guitar.y] + guitar.x].play();
             },
             reset: function() {
                 for (var i = 0; i < this.alphabetEl.childNodes.length; i++) {
